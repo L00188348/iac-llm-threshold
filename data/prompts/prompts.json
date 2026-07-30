@@ -1,0 +1,12 @@
+[
+  {
+    "id": "p001",
+    "level": 1,
+    "prompt_text": "Write a Terraform configuration that creates an S3 bucket with versioning enabled."
+  },
+  {
+    "id": "p002",
+    "level": 2,
+    "prompt_text": "Create a VPC with public and private subnets, and an Internet Gateway. Also, define a route table and associate it with the public subnet."
+  }
+]

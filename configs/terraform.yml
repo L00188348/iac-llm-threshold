@@ -1,0 +1,3 @@
+terraform:
+  version: "1.6.0"
+  apply_timeout: "5m"

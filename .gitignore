@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+ENV/
+.venv
+*.egg-info/
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+
+# Data and experiment outputs 
+data/candidates/raw/
+data/runs/
+data/reference_standard/
+!data/reference_standard/.gitkeep
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/

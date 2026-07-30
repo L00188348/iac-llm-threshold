@@ -1,0 +1,14 @@
+checkov:
+  framework: "terraform"
+  severity_fail: ["HIGH", "CRITICAL"]
+  extra_args: ["--quiet"]
+
+trivy:
+  severity_fail: ["HIGH", "CRITICAL"]
+  format: "json"
+  timeout: "5m"
+
+localstack:
+  endpoint: "http://localhost:4566"
+  region: "us-east-1"
+  timeout_seconds: 60

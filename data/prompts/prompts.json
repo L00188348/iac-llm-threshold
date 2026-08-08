@@ -2,11 +2,301 @@
   {
     "id": "p001",
     "level": 1,
-    "prompt_text": "Write a Terraform configuration that creates an S3 bucket with versioning enabled."
+    "prompt_text": "Write a Terraform configuration that creates an S3 bucket with versioning enabled, lifecycle rule to transition objects to Glacier after 30 days, and server-side encryption with AES-256."
   },
   {
     "id": "p002",
+    "level": 1,
+    "prompt_text": "Create a KMS symmetric key with automatic rotation enabled, an alias 'app-key', and a key policy that restricts usage to a specific IAM role."
+  },
+  {
+    "id": "p003",
+    "level": 1,
+    "prompt_text": "Write a Terraform configuration that provisions a DynamoDB table with a composite primary key (UserId as partition key, Timestamp as sort key) and enables point-in-time recovery."
+  },
+  {
+    "id": "p004",
+    "level": 1,
+    "prompt_text": "Create an SQS standard queue with message retention of 14 days, a delivery delay of 5 seconds, and a dead-letter queue with maxReceiveCount set to 3."
+  },
+  {
+    "id": "p005",
+    "level": 1,
+    "prompt_text": "Write a configuration that creates an IAM role with an attached policy allowing read-only access to S3 and full access to CloudWatch Logs, with a trust relationship for EC2."
+  },
+  {
+    "id": "p006",
+    "level": 1,
+    "prompt_text": "Create a security group with inbound rules for SSH (port 22) restricted to 10.0.0.0/16, HTTP (port 80) for 0.0.0.0/0, and HTTPS (port 443) for 0.0.0.0/0. Define outbound rules for all traffic."
+  },
+  {
+    "id": "p007",
+    "level": 1,
+    "prompt_text": "Write a Terraform configuration that provisions an EC2 instance of type t3.medium with an Amazon Linux 2 AMI, a 30GB gp3 root volume, and user data that installs nginx."
+  },
+  {
+    "id": "p008",
+    "level": 1,
+    "prompt_text": "Create an SNS topic with a FIFO configuration, enable content-based deduplication, and create a subscription to an existing SQS queue with raw message delivery enabled."
+  },
+  {
+    "id": "p009",
+    "level": 1,
+    "prompt_text": "Write a configuration that creates a CloudWatch Log Group with a retention period of 90 days and a metric filter that counts occurrences of 'ERROR' in application logs and triggers an SNS alert."
+  },
+  {
+    "id": "p010",
+    "level": 1,
+    "prompt_text": "Write a Terraform configuration that creates an EC2 instance and attaches an EBS volume of type gp3 with 100GB size, with the volume automatically deleted upon instance termination."
+  },
+  {
+    "id": "p011",
     "level": 2,
-    "prompt_text": "Create a VPC with public and private subnets, and an Internet Gateway. Also, define a route table and associate it with the public subnet."
+    "prompt_text": "Create an S3 bucket and configure it to send object creation events to an SQS queue. Define both resources and the necessary S3 bucket notification configuration."
+  },
+  {
+    "id": "p012",
+    "level": 2,
+    "prompt_text": "Write a configuration that creates an SNS topic and an SQS queue subscribed to it. Attach a policy to the queue to allow the SNS topic to send messages to it."
+  },
+  {
+    "id": "p013",
+    "level": 2,
+    "prompt_text": "Create a Lambda function that writes logs to CloudWatch and has an IAM role with permissions to write logs and to put objects into a specified S3 bucket. Pass the bucket name via environment variables."
+  },
+  {
+    "id": "p014",
+    "level": 2,
+    "prompt_text": "Write a configuration that creates two S3 buckets (source and destination) and sets up cross-bucket replication with a replication rule for objects with the prefix 'logs/' using an IAM role for replication."
+  },
+  {
+    "id": "p015",
+    "level": 2,
+    "prompt_text": "Create a DynamoDB table and a Lambda function that reads from it. Pass the table name as an environment variable to the Lambda and grant the Lambda's IAM role read permissions to the table."
+  },
+  {
+    "id": "p016",
+    "level": 2,
+    "prompt_text": "Write a configuration that provisions a security group for an RDS instance (port 3306) and a security group for an EC2 instance, then defines ingress rules to allow the EC2 security group to communicate with the RDS security group."
+  },
+  {
+    "id": "p017",
+    "level": 2,
+    "prompt_text": "Create an ECS Fargate service with a target group attached to an Application Load Balancer. Define the load balancer, listener, and target group, and associate the ECS service with the target group."
+  },
+  {
+    "id": "p018",
+    "level": 2,
+    "prompt_text": "Write a configuration that creates an EC2 key pair, stores the public key in AWS, and launches an EC2 instance that references the key pair name. Then, create an EIP and associate it to the instance."
+  },
+  {
+    "id": "p019",
+    "level": 2,
+    "prompt_text": "Create a VPC, a subnet, and a VPC endpoint (gateway type) for S3. Configure the S3 bucket policy to allow access only from that VPC endpoint."
+  },
+  {
+    "id": "p020",
+    "level": 2,
+    "prompt_text": "Write a configuration that creates a VPC with 2 public subnets and 2 private subnets, an Internet Gateway, a NAT Gateway in one public subnet, and a route table for private subnets that routes through the NAT Gateway."
+  },
+  {
+    "id": "p021",
+    "level": 3,
+    "prompt_text": "Create multiple S3 buckets using for_each based on a list of bucket names ['analytics', 'warehouse', 'staging']. Each bucket must have a lifecycle rule that transitions to Standard-IA after 30 days."
+  },
+  {
+    "id": "p022",
+    "level": 3,
+    "prompt_text": "Write a configuration that uses count to create three SQS queues (dev, staging, prod) with different message retention periods (3, 7, 14 days) and different delay seconds (0, 5, 10)."
+  },
+  {
+    "id": "p023",
+    "level": 3,
+    "prompt_text": "Create a security group using dynamic blocks for ingress rules, where the input is a list of objects containing port, protocol, and cidr_blocks. Define at least three dynamic rules."
+  },
+  {
+    "id": "p024",
+    "level": 3,
+    "prompt_text": "Write a configuration that creates a Lambda function with environment variables generated from a map {ENV='prod', LOG_LEVEL='info', REGION='us-east-1'}. Use for_each to define multiple Lambda functions if necessary."
+  },
+  {
+    "id": "p025",
+    "level": 3,
+    "prompt_text": "Create a local module for an EC2 instance that accepts parameters (ami, instance_type, subnet_id, security_group_ids). Then use this module to instantiate three EC2 instances with different instance types."
+  },
+  {
+    "id": "p026",
+    "level": 3,
+    "prompt_text": "Write a configuration that creates an IAM policy with dynamic statements from a list of actions and resources. Include at least three statements with different combinations of actions and resources."
+  },
+  {
+    "id": "p027",
+    "level": 3,
+    "prompt_text": "Create a CloudWatch alarm that monitors CPUUtilization of an EC2 instance and triggers an SNS notification when the average exceeds 80% for 2 consecutive periods of 5 minutes."
+  },
+  {
+    "id": "p028",
+    "level": 3,
+    "prompt_text": "Write a configuration that provisions a DynamoDB table with attributes defined as a variable of type list(object({name=string, type=string})). The table must use on-demand capacity and have global secondary indexes."
+  },
+  {
+    "id": "p029",
+    "level": 3,
+    "prompt_text": "Create a VPC with subnets using cidrsubnet function to automatically calculate CIDR blocks from a base CIDR /16 and a number of subnets. Create both public and private subnets with different sizes."
+  },
+  {
+    "id": "p030",
+    "level": 3,
+    "prompt_text": "Write a configuration that creates an S3 bucket policy with dynamic statements using count to iterate over a list of IAM principals and grant them different permissions (read, write, delete) based on the principal."
+  },
+  {
+    "id": "p031",
+    "level": 4,
+    "prompt_text": "Create a reusable module for an ECS Fargate service. The module should accept variables of type object({name=string, desired_count=number, container_port=number, environment=map(string), cpu=number, memory=number}). Include validation to ensure cpu and memory are within valid Fargate combinations."
+  },
+  {
+    "id": "p032",
+    "level": 4,
+    "prompt_text": "Write a module for RDS that accepts parameters of type map(object({instance_class=string, allocated_storage=number, engine_version=string, multi_az=bool})). Add validation rules for storage >= 20, valid engine versions, and ensure multi_az only if instance_class starts with 'db.'."
+  },
+  {
+    "id": "p033",
+    "level": 4,
+    "prompt_text": "Create a module for a serverless application using API Gateway and Lambda. The module should accept input of type object({api_name=string, routes=list(object({path=string, method=string, handler=string})), memory_size=number, timeout=number}). Validate memory between 128 and 10240 and timeout between 3 and 900 seconds."
+  },
+  {
+    "id": "p034",
+    "level": 4,
+    "prompt_text": "Write a module for a data processing workflow that includes an S3 bucket for input, an SQS queue, and a Lambda function that processes messages from the queue and stores results in an output S3 bucket. Include a dead-letter queue configuration."
+  },
+  {
+    "id": "p035",
+    "level": 4,
+    "prompt_text": "Create a network module that provisions a VPC with subnets, Internet Gateway, NAT Gateway, route tables, and security groups. The input should be an object with nested attributes including vpc_cidr, public_subnet_cidrs, private_subnet_cidrs, enable_nat_gateway, availability_zones. Validate CIDR blocks and availability zones match."
+  },
+  {
+    "id": "p036",
+    "level": 4,
+    "prompt_text": "Create a module for an Application Load Balancer (ALB) with a listener on port 80, a target group with health check configuration (HTTP 200), and an auto-scaling group attached to the target group."
+  },
+  {
+    "id": "p037",
+    "level": 4,
+    "prompt_text": "Create a module for an ECS cluster with EC2 capacity providers, a task definition for nginx, and a service that runs 2 tasks with load balancing via an ALB."
+  },
+  {
+    "id": "p038",
+    "level": 4,
+    "prompt_text": "Write a module for monitoring and alerting using CloudWatch alarms, SNS topics, and Lambda functions. Accept input of type map(object({metric_name=string, statistic=string, threshold=number, evaluation_periods=number, alarm_actions=list(string)})). Validate threshold > 0 and evaluation_periods >= 1."
+  },
+  {
+    "id": "p039",
+    "level": 4,
+    "prompt_text": "Create a module for an EC2 bastion host that accepts parameters (subnet_id, security_group_ids, key_name, allowed_cidr) and creates an associated EIP and a security group rule allowing SSH from the allowed_cidr. Include validation to ensure allowed_cidr is a valid IPv4 CIDR block."
+  },
+  {
+    "id": "p040",
+    "level": 4,
+    "prompt_text": "Write a module for a caching layer with ElastiCache Redis. Accept input of type object({cluster_id=string, node_type=string, num_cache_nodes=number, port=number, subnet_group_name=string, security_group_ids=list(string)}). Validate node_type is a valid ElastiCache instance type."
+  },
+  {
+    "id": "p041",
+    "level": 4,
+    "prompt_text": "Create a module that provisions an RDS instance with automated backups, performance insights, and enhanced monitoring. Input should be object({identifier=string, engine=string, instance_class=string, allocated_storage=number, backup_retention_period=number, monitoring_interval=number}). Validate backup_retention_period between 1 and 35 and monitoring_interval in [0, 1, 5, 10, 15, 30, 60]."
+  },
+  {
+    "id": "p042",
+    "level": 4,
+    "prompt_text": "Write a module for an auto-scaling group with launch template, load balancer target group attachment, and CloudWatch alarms for scaling. Input should be object({name=string, min_size=number, max_size=number, desired_capacity=number, instance_type=string, target_group_arn=string}). Validate min_size <= desired_capacity <= max_size."
+  },
+  {
+    "id": "p043",
+    "level": 4,
+    "prompt_text": "Create a module for a complete development environment including VPC, EC2 bastion, RDS, and S3. Input should be object({environment=string, vpc_cidr=string, instance_type=string, db_instance_class=string, db_engine=string}). Validate environment from ['dev','staging','prod'] and ensure instance_type and db_instance_class match valid patterns."
+  },
+  {
+    "id": "p044",
+    "level": 4,
+    "prompt_text": "Write a module for stream processing using Kinesis Data Streams and Lambda consumers. Input should be object({stream_name=string, shard_count=number, retention_hours=number, consumer_function_name=string}). Validate shard_count >= 1, retention_hours between 24 and 168, and consumer function name not empty."
+  },
+  {
+    "id": "p045",
+    "level": 4,
+    "prompt_text": "Create a module for a subscription filtering system with an SNS topic, multiple SQS queues, and subscription filters based on message attributes (e.g., priority: 'high', 'medium', 'low')."
+  },
+  {
+    "id": "p046",
+    "level": 5,
+    "prompt_text": "Write a Terraform configuration that creates two S3 buckets in the same region, one with public-read access and server-side encryption with AES-256, and the other with private access, KMS encryption, and versioning enabled. Use different IAM roles for accessing each bucket."
+  },
+  {
+    "id": "p047",
+    "level": 5,
+    "prompt_text": "Create two separate VPCs in the same region (us-east-1), each with public and private subnets, Internet Gateway, and NAT Gateway. Use a VPC peering connection within the same region to allow communication between the private subnets of both VPCs."
+  },
+  {
+    "id": "p048",
+    "level": 5,
+    "prompt_text": "Write a configuration that provisions a DynamoDB table with on-demand capacity, multiple Global Secondary Indexes (GSIs), and local secondary indexes (LSIs). Use complex attribute definitions and nested object types."
+  },
+  {
+    "id": "p049",
+    "level": 5,
+    "prompt_text": "Create multiple EC2 instances across different subnets and availability zones (us-east-1a, us-east-1b) using a launch template and auto-scaling group, with different instance types based on count.index."
+  },
+  {
+    "id": "p050",
+    "level": 5,
+    "prompt_text": "Write a configuration that sets up S3 bucket replication between two buckets in the same region, with a replication rule for objects with the prefix 'backup/', using an IAM role for replication."
+  },
+  {
+    "id": "p051",
+    "level": 5,
+    "prompt_text": "Create an ECS cluster with both Fargate and EC2 capacity providers. Define two separate services, one using Fargate and one using EC2, attached to different target groups of the same Application Load Balancer."
+  },
+  {
+    "id": "p052",
+    "level": 5,
+    "prompt_text": "Write a configuration that creates an SNS topic with multiple SQS queue subscriptions, each with different filtering policies based on message attributes (environment: dev, staging, prod)."
+  },
+  {
+    "id": "p053",
+    "level": 5,
+    "prompt_text": "Create an RDS instance with a read replica in the same region (us-east-1). Configure automated backups, maintenance windows, and enhanced monitoring."
+  },
+  {
+    "id": "p054",
+    "level": 5,
+    "prompt_text": "Write a configuration that creates a sophisticated multi-tier application with a public ALB, private ECS service, and a separate RDS database in a different VPC with VPC peering (same region)."
+  },
+  {
+    "id": "p055",
+    "level": 5,
+    "prompt_text": "Create a security group with a self-reference rule (allowing traffic from itself) and a Prefix List rule referencing a prefix list created in the same configuration."
+  },
+  {
+    "id": "p056",
+    "level": 5,
+    "prompt_text": "Write a Terraform configuration using multiple provider aliases (same region, different roles or endpoints) to demonstrate advanced provider configuration. Use assume_role with dynamic policies, and validate the configuration using data sources like aws_caller_identity."
+  },
+  {
+    "id": "p057",
+    "level": 5,
+    "prompt_text": "Create a comprehensive backup strategy for an S3 bucket involving multiple lifecycle rules (transition to Standard-IA after 30 days, then to Glacier after 90 days, and finally expire after 365 days), bucket versioning, and intelligent-tiering archive access tier."
+  },
+  {
+    "id": "p058",
+    "level": 5,
+    "prompt_text": "Write a configuration that sets up composite CloudWatch alarms using metric math expressions (e.g., sum of two metrics, or error rate calculation), and sends notifications to a central SNS topic."
+  },
+  {
+    "id": "p059",
+    "level": 5,
+    "prompt_text": "Create a complete event-driven serverless pipeline: S3 upload triggers an S3 event notification -> SQS queue -> Lambda function that processes the data -> stores results in a DynamoDB table -> triggers a second Lambda for post-processing and sends a confirmation SNS notification."
+  },
+  {
+    "id": "p060",
+    "level": 5,
+    "prompt_text": "Write a configuration that provisions two VPCs in the same region, establishes VPC peering, creates route table entries for both VPCs, and launches EC2 instances in each VPC with security groups allowing cross-VPC communication on port 22 and 80."
   }
 ]

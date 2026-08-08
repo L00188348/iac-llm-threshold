@@ -1,0 +1,35 @@
+# configs/default.yaml
+# Pipeline configuration for IaC threshold calibration experiment
+
+# API settings
+api:
+  model: "gemini-3.1-pro"
+  temperature: 0.7
+  max_tokens: 2048
+
+# Generation settings
+generation:
+  candidates_per_prompt: 5
+
+# Threshold grid
+threshold:
+  min: 0.0
+  max: 1.0
+  step: 0.1
+
+# Directory paths
+paths:
+  data_dir: "data/"
+  prompts_file: "data/prompts/prompts.json"
+  outputs_dir: "data/outputs/"
+  plots_dir: "data/plots/"
+
+# Validation tools
+validation:
+  checkov:
+    enabled: true
+  trivy:
+    enabled: true
+  localstack:
+    enabled: true
+    endpoint: "http://localhost:4566"

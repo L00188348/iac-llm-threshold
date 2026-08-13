@@ -1,5 +1,0 @@
-scorer:
-  name: "cosine_sim"
-  embedding_model: "jinaai/jina-embeddings-v2-base-code"
-  language: "hcl"
-  device: "cpu"

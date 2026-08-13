@@ -16,11 +16,13 @@ build/
 .env
 .env.local
 
-# Data and experiment outputs 
-data/candidates/raw/
-data/runs/
-data/reference_standard/
-!data/reference_standard/.gitkeep
+# Data and experiment outputs
+data/generated/
+data/validation/
+data/calibration/
+data/plots/
+!data/calibration/.gitkeep
+!data/plots/.gitkeep
 
 # Logs
 logs/

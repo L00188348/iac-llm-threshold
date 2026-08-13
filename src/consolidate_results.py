@@ -13,7 +13,7 @@ from pathlib import Path
 # =============================================================================
 
 VALIDATION_DIR = Path("data/validation")
-OUTPUT_FILE = Path("data/validation/consolidated_report.csv")
+OUTPUT_FILE = Path("data/validation/validation_summary.csv")
 
 
 # =============================================================================

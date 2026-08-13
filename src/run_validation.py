@@ -136,10 +136,10 @@ def run_localstack(candidate_dir: Path) -> dict:
     }
 
     terraform_commands = [
-        ("init", ["terraform", "init"], 60),
-        ("validate", ["terraform", "validate"], 60),
-        ("plan", ["terraform", "plan"], 120),
-        ("apply", ["terraform", "apply", "-auto-approve"], 180),
+        ("init", ["tflocal", "init"], 60),
+        ("validate", ["tflocal", "validate"], 60),
+        ("plan", ["tflocal", "plan"], 120),
+        ("apply", ["tflocal", "apply", "-auto-approve"], 180),
     ]
 
     for step_name, cmd, timeout in terraform_commands:

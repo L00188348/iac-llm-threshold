@@ -21,7 +21,9 @@ threshold:
 paths:
   data_dir: "data/"
   prompts_file: "data/prompts/prompts.json"
-  outputs_dir: "data/outputs/"
+  generated_dir: "data/generated/"
+  validation_dir: "data/validation/"
+  calibration_dir: "data/calibration/"
   plots_dir: "data/plots/"
 
 # Validation tools

@@ -1,11 +1,14 @@
-# LLM orchestration
+# LLM Orchestration
 langchain>=0.3.0
+langchain-openai>=0.1.0
 langchain-google-genai>=1.0.0
 
-# Uncertainty quantification
+# Uncertainty Quantification & Embeddings
 uqlm>=0.6.0
+sentence-transformers>=3.0.0
+torch>=2.0.0
 
-# Data processing and metrics
+# Data Processing and Metrics
 pandas>=2.0.0
 numpy>=1.24.0
 scikit-learn>=1.3.0
@@ -14,12 +17,9 @@ scikit-learn>=1.3.0
 matplotlib>=3.7.0
 seaborn>=0.12.0
 
-# Configuration and environment
+# Configuration, Utilities & Environment
 pyyaml>=6.0
 python-dotenv>=1.0.0
-
-# CLI and utilities
 click>=8.1.0
 tqdm>=4.65.0
-
 terraform-local>=0.1.0

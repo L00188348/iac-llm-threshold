@@ -3,7 +3,7 @@
 ![Python Version](https://img.shields.io/badge/python-3.11+-blue)
 ![Status](https://img.shields.io/badge/status-experimental-yellow)
 
-This project implements an experimental pipeline to calibrate confidence thresholds for LLM-generated Infrastructure-as-Code (Terraform). It uses **Gemini 3.1 Pro** for code generation, **UQLM (CodeGenUQ)** for uncertainty quantification, **Checkov/Trivy** for static analysis, and **LocalStack** for dynamic validation.
+This project implements an experimental pipeline to calibrate confidence thresholds for LLM-generated Infrastructure-as-Code (Terraform). It uses **ChatGPT** for code generation, **UQLM (CodeGenUQ)** for uncertainty quantification, **Checkov/Trivy** for static analysis, and **LocalStack** for dynamic validation.
 
 ## Pipeline Overview
 
@@ -20,12 +20,18 @@ The pipeline follows five phases, as defined in the methodology:
 ├── configs/
 │ └── default.yaml # Pipeline configuration
 ├── data/
-│ ├── prompts/
-│ │ └── prompts.json # 60 instructional prompts
-│ ├── generated/ # Generated scripts (ignored by Git)
-│ ├── validation/ # Validation reports (ignored by Git)
-│ ├── calibration/ # Calibration metrics (ignored by Git)
-│ └── plots/ # Generated plots (ignored by Git)
+│   ├── prompts/
+│   │   └── prompts.json          # Inputs
+│   └── generated/                # [DATASET]
+│       └── level_1/
+│           └── p001/
+│               └── p001_c1/
+│                   ├── main.tf                 # Raw Terraform code
+│                   └── confidence_score.json   # Uncertainty and similarity scores
+│ ├── generated/ # Generated scripts
+│ ├── validation/ # Validation reports
+│ ├── calibration/ # Calibration metrics
+│ └── plots/ # Generated plots
 ├── src/
 │ ├── main.py # Main orchestration script
 │ ├── generate_candidates.py # Phase 2: code generation
@@ -67,7 +73,7 @@ pip install terraform-local
 
 ### 4. Configure environment variables
 cp .env.example .env
-# Edit .env and set GOOGLE_API_KEY=your_key_here
+# Edit .env and set OPENAI_API_KEY=your_key_here
 
 ### 5. Start LocalStack
 cd infra
@@ -81,17 +87,15 @@ python src/main.py
 
 ## Outputs
 
+## Outputs
+
 After running the pipeline, the following artefacts are generated:
 
-data/validation/validation_summary.csv – Validation results summary (Checkov, Trivy, LocalStack)
-
-data/validation/consolidated_report.csv – Confidence scores + manual labels (reference standard)
-
-data/calibration/calibration_total.csv – Performance metrics for all thresholds
-
-data/calibration/calibration_level_*.csv – Performance metrics per complexity level
-
-data/plots/ – Trade-off curves (Precision/Recall vs τ, F1 vs τ, PR curves)
+* `data/validation/validation_summary.csv` – Validation results summary (Checkov, Trivy, LocalStack)
+* `data/validation/consolidated_report.csv` – Confidence scores + manual labels (reference standard)
+* `data/calibration/calibration_total.csv` – Performance metrics for all thresholds
+* `data/calibration/calibration_level_*.csv` – Performance metrics per complexity level
+* `data/plots/` – Trade-off curves (Precision/Recall vs τ, F1 vs τ, PR curves)
 
 ## License
 

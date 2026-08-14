@@ -16,14 +16,6 @@ build/
 .env
 .env.local
 
-# Data and experiment outputs
-data/generated/
-data/validation/
-data/calibration/
-data/plots/
-!data/calibration/.gitkeep
-!data/plots/.gitkeep
-
 # Logs
 logs/
 *.log

@@ -15,6 +15,7 @@ build/
 # Environment variables
 .env
 .env.local
+docker-compose.yml
 
 # Logs
 logs/
@@ -33,4 +34,9 @@ Thumbs.db
 # Terraform
 *.tfstate
 *.tfstate.*
-.terraform/
+.terraform/infra/docker-compose.yml
+infra/localstack_data/
+infra/docker-compose.yml
+infra/localstack_data/
+infra/docker-compose.yml
+infra/localstack_data/

@@ -21,8 +21,8 @@ OUTPUT_FILE = Path("data/validation/validation_summary.csv")
 # =============================================================================
 
 def main():
-    # Get all candidate summary files
-    summary_files = sorted(VALIDATION_DIR.glob("*/summary.json"))
+    # Get all candidate summary files (recursively)
+    summary_files = sorted(VALIDATION_DIR.glob("**/summary.json"))
 
     if not summary_files:
         print(f"No summary files found in {VALIDATION_DIR}")
@@ -35,6 +35,8 @@ def main():
     rows = []
 
     for summary_file in summary_files:
+        # Extrair o ID do candidato do caminho
+        # Exemplo: level_1/p001/p001_c1 -> p001_c1
         candidate_id = summary_file.parent.name
 
         with open(summary_file, "r") as f:
@@ -42,6 +44,8 @@ def main():
 
         row = {
             "candidate_id": candidate_id,
+            "level": data.get("level", "unknown"),
+            "prompt_id": data.get("prompt_id", "unknown"),
             "checkov_status": data.get("checkov", {}).get("status", "unknown"),
             "checkov_findings": data.get("checkov", {}).get("findings_count", 0),
             "trivy_status": data.get("trivy", {}).get("status", "unknown"),

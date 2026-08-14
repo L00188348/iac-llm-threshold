@@ -28,7 +28,6 @@ The pipeline follows five phases, as defined in the methodology:
 │               └── p001_c1/
 │                   ├── main.tf                 # Raw Terraform code
 │                   └── confidence_score.json   # Uncertainty and similarity scores
-│ ├── generated/ # Generated scripts
 │ ├── validation/ # Validation reports
 │ ├── calibration/ # Calibration metrics
 │ └── plots/ # Generated plots
@@ -79,13 +78,26 @@ cp .env.example .env
 cd infra
 docker-compose up -d
 
-### 6. Run the pipeline
-make run
+### 6. Run the pipeline (step by step)
+# Generate candidates
+python src/generate_candidates.py
 
-# Or manually:
-python src/main.py
+# Run automated validation
+python src/run_validation.py
 
-## Outputs
+# Consolidate validation results
+python src/consolidate_results.py
+
+# (Manual step) Create reference_labels.csv with Trusted/Untrusted labels
+
+# Build reference standard
+python src/build_reference_standard.py
+
+# Run threshold calibration
+python src/calibrate.py
+
+# Generate trade-off curves
+python src/plot_curves.py
 
 ## Outputs
 

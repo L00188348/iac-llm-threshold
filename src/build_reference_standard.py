@@ -3,7 +3,7 @@
 Build the reference standard by combining confidence scores and manual labels.
 
 Reads:
-- Confidence scores from data/generated/*/confidence_score.json
+- Confidence scores from data/generated/**/confidence_score.json
 - Manual labels from data/validation/reference_labels.csv
 
 Writes:
@@ -40,28 +40,31 @@ def main():
     labels_df = pd.read_csv(LABELS_FILE)
     print(f"Loaded {len(labels_df)} labels from {LABELS_FILE}")
 
-    # 3. Load confidence scores from all generated candidates
+    # 3. Load confidence scores from all generated candidates (recursively)
     scores = []
-    candidate_dirs = sorted(GENERATED_DIR.glob("p*_c*"))
+    # Find all confidence_score.json files in any subdirectory
+    score_files = sorted(GENERATED_DIR.glob("**/confidence_score.json"))
 
-    for candidate_dir in candidate_dirs:
-        candidate_id = candidate_dir.name
-        score_file = candidate_dir / "confidence_score.json"
+    for score_file in score_files:
+        # Extract candidate_id from the parent directory name
+        # Example: .../level_1/p001/p001_c1/confidence_score.json -> p001_c1
+        candidate_id = score_file.parent.name
 
-        if score_file.exists():
-            with open(score_file, "r") as f:
-                data = json.load(f)
-                scores.append({
-                    "candidate_id": candidate_id,
-                    "cosine_sim": data.get("cosine_sim"),
-                    "functional_equivalence_rate": data.get("functional_equivalence_rate"),
-                    "mean_confidence": data.get("mean_confidence"),
-                })
-        else:
-            print(f"Warning: {score_file} not found for {candidate_id}")
+        with open(score_file, "r") as f:
+            data = json.load(f)
+            scores.append({
+                "candidate_id": candidate_id,
+                "cosine_sim": data.get("cosine_sim"),
+                "functional_equivalence_rate": data.get("functional_equivalence_rate"),
+                "mean_confidence": data.get("mean_confidence"),
+            })
 
     scores_df = pd.DataFrame(scores)
     print(f"Loaded {len(scores_df)} confidence scores from {GENERATED_DIR}")
+
+    if scores_df.empty:
+        print("No confidence scores found. Please run generate_candidates.py first.")
+        return
 
     # 4. Merge scores with labels
     consolidated = scores_df.merge(labels_df, on="candidate_id", how="inner")

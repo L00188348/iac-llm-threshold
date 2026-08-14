@@ -35,7 +35,6 @@ def run_checkov(candidate_dir: Path) -> dict:
     }
 
     try:
-        # Run checkov and capture JSON output
         cmd = ["checkov", "-d", str(candidate_dir), "--output", "json"]
         proc = subprocess.run(
             cmd,
@@ -45,13 +44,10 @@ def run_checkov(candidate_dir: Path) -> dict:
         )
 
         if proc.returncode != 0:
-            # Checkov returns non-zero if it finds issues
             result["status"] = "issues_found"
 
-        # Parse JSON output
         try:
             data = json.loads(proc.stdout)
-            # Count failed checks
             failed_checks = data.get("results", {}).get("failed_checks", [])
             result["findings_count"] = len(failed_checks)
         except json.JSONDecodeError:
@@ -85,7 +81,6 @@ def run_trivy(candidate_dir: Path) -> dict:
     }
 
     try:
-        # Run trivy and capture JSON output
         cmd = ["trivy", "config", "--format", "json", str(candidate_dir)]
         proc = subprocess.run(
             cmd,
@@ -97,10 +92,8 @@ def run_trivy(candidate_dir: Path) -> dict:
         if proc.returncode != 0:
             result["status"] = "issues_found"
 
-        # Parse JSON output
         try:
             data = json.loads(proc.stdout)
-            # Count vulnerabilities
             results = data.get("Results", [])
             total_findings = 0
             for res in results:
@@ -198,28 +191,26 @@ def run_localstack(candidate_dir: Path) -> dict:
     return result
 
 
-def save_validation_results(candidate_id: str, checkov_result: dict, trivy_result: dict, localstack_result: dict) -> None:
+def save_validation_results_nested(relative_path: Path, checkov_result: dict, trivy_result: dict, localstack_result: dict) -> None:
     """
-    Save validation results to JSON files in the validation directory.
+    Save validation results to JSON files, preserving the nested directory structure.
     """
-    candidate_dir = VALIDATION_DIR / candidate_id
+    candidate_dir = VALIDATION_DIR / relative_path
     candidate_dir.mkdir(parents=True, exist_ok=True)
 
-    # Save Checkov results
     with open(candidate_dir / "checkov.json", "w") as f:
         json.dump(checkov_result, f, indent=2)
 
-    # Save Trivy results
     with open(candidate_dir / "trivy.json", "w") as f:
         json.dump(trivy_result, f, indent=2)
 
-    # Save LocalStack results
     with open(candidate_dir / "localstack.json", "w") as f:
         json.dump(localstack_result, f, indent=2)
 
-    # Save consolidated summary
     summary = {
-        "candidate_id": candidate_id,
+        "candidate_id": relative_path.name,
+        "level": relative_path.parent.parent.name,
+        "prompt_id": relative_path.parent.name,
         "checkov": {
             "status": checkov_result["status"],
             "findings_count": checkov_result["findings_count"],
@@ -239,24 +230,26 @@ def save_validation_results(candidate_id: str, checkov_result: dict, trivy_resul
 # =============================================================================
 # Main
 # =============================================================================
-
 def main():
-    # Get all candidate directories
-    candidate_dirs = sorted(GENERATED_DIR.glob("p*_c*"))
-    
+    print("DEBUG: main() started")
+    print(f"Looking for candidates in: {GENERATED_DIR}")
+
+    # Get all candidate directories (recursively)
+    candidate_dirs = sorted(GENERATED_DIR.glob("**/*_c*"))
+
+    print(f"Found {len(candidate_dirs)} candidate directories")
+
     if not candidate_dirs:
         print("No candidate directories found in", GENERATED_DIR)
         print("Run generate_candidates.py first.")
         sys.exit(1)
 
-    print(f"Found {len(candidate_dirs)} candidate directories")
     print("Running validations...\n")
 
     for candidate_dir in candidate_dirs:
-        candidate_id = candidate_dir.name
-        print(f"Processing {candidate_id}...")
+        relative_path = candidate_dir.relative_to(GENERATED_DIR)
+        print(f"Processing {relative_path}...")
 
-        # Run validations
         checkov_result = run_checkov(candidate_dir)
         print(f"  Checkov: {checkov_result['status']} (findings: {checkov_result['findings_count']})")
 
@@ -266,10 +259,9 @@ def main():
         localstack_result = run_localstack(candidate_dir)
         print(f"  LocalStack: {localstack_result['status']}")
 
-        # Save results
-        save_validation_results(candidate_id, checkov_result, trivy_result, localstack_result)
+        save_validation_results_nested(relative_path, checkov_result, trivy_result, localstack_result)
 
-        print(f"  Results saved to data/validation/{candidate_id}/\n")
+        print(f"  Results saved to data/validation/{relative_path}/\n")
 
     print("All validations complete.")
     print("Results stored in data/validation/")

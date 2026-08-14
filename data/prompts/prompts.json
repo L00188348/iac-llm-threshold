@@ -2,6 +2,6 @@
   {
     "id": "p001",
     "level": 1,
-    "prompt_text": "Write your prompts here."
+    "prompt_text": "Write a Terraform configuration that creates an S3 bucket with versioning enabled, lifecycle rule to transition objects to Glacier after 30 days, and server-side encryption with AES-256."
   }
 ]

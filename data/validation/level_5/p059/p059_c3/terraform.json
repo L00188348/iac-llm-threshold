@@ -1,0 +1,12 @@
+{
+  "status": "failed_at_init",
+  "steps": {
+    "init": {
+      "status": "failed",
+      "returncode": 1,
+      "stdout": "\u001b[0m\u001b[1mInitializing the backend...\u001b[0m\n",
+      "stderr": "\u001b[31m\u2577\u001b[0m\u001b[0m\n\u001b[31m\u2502\u001b[0m \u001b[0m\u001b[1m\u001b[31mError: \u001b[0m\u001b[0m\u001b[1m\u001b[0mTerraform encountered problems during initialisation, including problems\n\u001b[31m\u2502\u001b[0m \u001b[0mwith the configuration, described below.\n\u001b[31m\u2502\u001b[0m \u001b[0m\n\u001b[31m\u2502\u001b[0m \u001b[0mThe Terraform configuration must be valid before initialization so that\n\u001b[31m\u2502\u001b[0m \u001b[0mTerraform can determine which modules and providers need to be installed.\u001b[0m\u001b[0m\n\u001b[31m\u2502\u001b[0m \u001b[0m\n\u001b[31m\u2502\u001b[0m \u001b[0m\u001b[0m\n\u001b[31m\u2575\u001b[0m\u001b[0m\n\u001b[31m\u2577\u001b[0m\u001b[0m\n\u001b[31m\u2502\u001b[0m \u001b[0m\u001b[1m\u001b[31mError: \u001b[0m\u001b[0m\u001b[1mUnterminated template string\u001b[0m\n\u001b[31m\u2502\u001b[0m \u001b[0m\n\u001b[31m\u2502\u001b[0m \u001b[0m\u001b[0m  on main.tf line 345, in resource \"aws_cloudwatch_metric_alarm\" \"high_cpu\":\n\u001b[31m\u2502\u001b[0m \u001b[0m 345:   comparison_operator = \"GreaterThanThreshold\u001b[4m\u001b[0m\u001b[0m\n\u001b[31m\u2502\u001b[0m \u001b[0m\n\u001b[31m\u2502\u001b[0m \u001b[0mNo closing marker was found for the string.\n\u001b[31m\u2575\u001b[0m\u001b[0m\n"
+    }
+  },
+  "error": "Terraform init failed"
+}

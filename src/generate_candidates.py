@@ -3,7 +3,7 @@
 Generate Terraform candidates and confidence scores using UQLM + Sentence Transformers.
 Forces raw code output and sanitizes markdown blocks.
 Saves candidates structured by Level -> Prompt -> Candidate.
-Uses OpenAI GPT-4o-mini.
+Uses OpenAI GPT-5.4-mini.
 """
 
 import asyncio
@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from uqlm import CodeGenUQ
 
-# Ignora avisos secundários
+# Ignore secondary warnings
 warnings.filterwarnings("ignore")
 
 load_dotenv()
@@ -41,7 +41,7 @@ SYSTEM_PROMPT = (
     "Output raw HCL code only."
 )
 
-# Variável global do embedder (será carregada dentro da main para evitar travamentos silenciosos)
+# Global embedder variable (will be loaded inside main to avoid silent crashes)
 embedder = None
 
 
@@ -50,7 +50,7 @@ embedder = None
 # =============================================================================
 
 def clean_terraform_code(code: str) -> str:
-    """Remove marcadores de blocos de código Markdown (```hcl, ```) e espaços extras."""
+    """Remove Markdown code block markers (```hcl, ```) and extra spaces."""
     if not code:
         return ""
         
@@ -68,7 +68,7 @@ def clean_terraform_code(code: str) -> str:
 
 
 def compute_individual_cosine_sims(responses: list[str]) -> list[float]:
-    """Calcula a similaridade de cosseno individual em relação ao centróide do prompt."""
+    """Calculate individual cosine similarity with respect to the prompt centroid."""
     global embedder
     if not responses or len(responses) == 1:
         return [1.0]
@@ -89,7 +89,7 @@ def compute_individual_cosine_sims(responses: list[str]) -> list[float]:
         sims = F.cosine_similarity(embeddings_norm, centroid_norm, dim=1)
         return [float(s) for s in sims]
     except Exception as e:
-        print(f"[AVISO] Falha ao calcular cosine sim individual: {e}")
+        print(f"[WARNING] Failed to compute individual cosine sim: {e}")
         return [0.99] * len(responses)
 
 
@@ -98,14 +98,14 @@ def compute_individual_cosine_sims(responses: list[str]) -> list[float]:
 # =============================================================================
 
 async def main():
-    print("Iniciando script generate_candidates.py...")
+    print("Starting generate_candidates.py...")
     
-    # Validação do arquivo de entrada
+    # Validate input file
     if not PROMPTS_FILE.exists():
-        print(f"[ERRO] Arquivo de prompts não encontrado em: {PROMPTS_FILE}")
+        print(f"[ERROR] Prompts file not found at: {PROMPTS_FILE}")
         sys.exit(1)
 
-    # 1. Carrega os prompts do arquivo JSON
+    # 1. Load prompts from JSON file
     with open(PROMPTS_FILE, "r", encoding="utf-8") as f:
         prompts_data = json.load(f)
 
@@ -116,14 +116,14 @@ async def main():
         for p in prompts_data
     ]
 
-    # Inicializa LLM e UQLM dentro do fluxo principal
+    # Initialize LLM and UQLM inside the main flow
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
-        print("[ERRO] OPENAI_API_KEY não configurada no arquivo .env!")
+        print("[ERROR] OPENAI_API_KEY not set in .env file!")
         sys.exit(1)
 
     llm = ChatOpenAI(
-        model="gpt-4o-mini",
+        model="gpt-5.4-mini",
         openai_api_key=api_key,
         temperature=0.7,
         max_tokens=2048,
@@ -135,13 +135,13 @@ async def main():
         top_k_logprobs=0,
     )
 
-    # 2. Gera os candidatos e avalia com UQLM
+    # 2. Generate candidates and score with UQLM
     print("Generating candidates and scoring with UQLM...")
     
     try:
         results = await uq.generate_and_score(prompts=formatted_prompts, num_responses=5)
     except Exception as e:
-        print(f"[ERRO CRÍTICO no UQLM]: {e}")
+        print(f"[CRITICAL ERROR in UQLM]: {e}")
         import traceback
         traceback.print_exc()
         return
@@ -149,7 +149,7 @@ async def main():
     candidates_list = []
     raw_df = results.to_df()
 
-    # 3. Processa cada prompt e extrai os 5 candidatos
+    # 3. Process each prompt and extract the 5 candidates
     for p_idx, prompt in enumerate(prompts_data):
         prompt_id = prompt["id"]
         level = prompt.get("level", 1)
@@ -170,7 +170,7 @@ async def main():
 
         individual_scores = compute_individual_cosine_sims(resps)
 
-        print(f"-> Prompt '{prompt_id}' (Level {level}): {len(resps)} candidatos processados.")
+        print(f"-> Prompt '{prompt_id}' (Level {level}): {len(resps)} candidates processed.")
 
         for cand_idx, resp in enumerate(resps):
             cleaned_code = clean_terraform_code(resp)
@@ -193,7 +193,7 @@ async def main():
     df = pd.DataFrame(candidates_list)
     print(f"\nGenerated {len(df)} total candidates from {len(prompts_data)} prompt(s).")
 
-    # 4. Salva no disco
+    # 4. Save to disk
     print("Saving scripts and confidence scores...")
 
     for _, row in df.iterrows():
@@ -228,6 +228,6 @@ if __name__ == "__main__":
     try:
         asyncio.run(main())
     except Exception as e:
-        print(f"[ERRO NO MAIN]: {e}")
+        print(f"[ERROR IN MAIN]: {e}")
         import traceback
         traceback.print_exc()

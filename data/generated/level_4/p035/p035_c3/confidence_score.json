@@ -1,0 +1,9 @@
+{
+  "prompt_id": "p035",
+  "level": 4,
+  "candidate_num": 3,
+  "cosine_sim": 0.9930367469787598,
+  "uqlm_global_cosine_sim": 0.9821541965007782,
+  "functional_equivalence_rate": 1.0,
+  "mean_confidence": 0.9930367469787598
+}

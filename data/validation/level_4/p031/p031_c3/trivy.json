@@ -1,0 +1,6 @@
+{
+  "status": "success",
+  "findings_count": 0,
+  "raw_output": "{\n  \"SchemaVersion\": 2,\n  \"Trivy\": {\n    \"Version\": \"0.69.3\"\n  },\n  \"ReportID\": \"01a006f1-73e4-7791-a31c-f7626f510131\",\n  \"CreatedAt\": \"2026-08-15T20:41:22.276498+01:00\",\n  \"ArtifactName\": \"/Users/romulo/Documents/DevOps Software Enginnering/Dissertac\u0327a\u0303o/iac-llm-threshold/data/generated/level_4/p031/p031_c3\",\n  \"ArtifactType\": \"filesystem\",\n  \"Results\": [\n    {\n      \"Target\": \".\",\n      \"Class\": \"config\",\n      \"Type\": \"terraform\",\n      \"MisconfSummary\": {\n        \"Successes\": 51,\n        \"Failures\": 0\n      }\n    }\n  ]\n}\n",
+  "error": null
+}

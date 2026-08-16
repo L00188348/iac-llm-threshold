@@ -1,0 +1,16 @@
+{
+  "candidate_id": "p008_c3",
+  "level": "level_1",
+  "prompt_id": "p008",
+  "checkov": {
+    "status": "issues_found",
+    "findings_count": 0
+  },
+  "trivy": {
+    "status": "success",
+    "findings_count": 0
+  },
+  "terraform": {
+    "status": "success"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": "failed_at_plan",
+  "steps": {
+    "init": {
+      "status": "success",
+      "returncode": 0,
+      "stdout": "\u001b[0m\u001b[1mInitializing the backend...\u001b[0m\n\u001b[0m\u001b[1mInitializing provider plugins...\u001b[0m\n- Finding hashicorp/aws versions matching \">= 5.0.0\"...\n- Finding latest version of hashicorp/random...\n- Installing hashicorp/aws v6.60.0...\n- Installed hashicorp/aws v6.60.0 (signed by HashiCorp)\n- Installing hashicorp/random v3.9.0...\n- Installed hashicorp/random v3.9.0 (signed by HashiCorp)\nTerraform has created a lock file \u001b[1m.terraform.lock.hcl\u001b[0m to record the provider\nselections it made above. Include this file in your version control repository\nso that Terraform can guarantee to make the same selections by default when\nyou run \"terraform init\" in the future.\u001b[0m\n\n\u001b[0m\u001b[1m\u001b[32mTerraform has been successfully initialized!\u001b[0m\u001b[32m\u001b[0m\n\u001b[0m\u001b[32m\nYou may now begin working with Terraform. Try running \"terraform plan\" to see\nany changes that are required for your infrastructure. All Terraform commands\nshould now work.\n\nIf you ever set or change modules or backend configuration for Terraform,\nrerun this command to reinitialize your working directory. If you forget, other\ncommands will detect it and remind you to do so if necessary.\u001b[0m\n",
+      "stderr": ""
+    },
+    "plan": {
+      "status": "failed",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "\u001b[31m\u2577\u001b[0m\u001b[0m\n\u001b[31m\u2502\u001b[0m \u001b[0m\u001b[1m\u001b[31mError: \u001b[0m\u001b[0m\u001b[1mCycle: data.aws_region.current, provider[\"registry.terraform.io/hashicorp/aws\"]\u001b[0m\n\u001b[31m\u2502\u001b[0m \u001b[0m\n\u001b[31m\u2502\u001b[0m \u001b[0m\u001b[0m\n\u001b[31m\u2575\u001b[0m\u001b[0m\n"
+    }
+  },
+  "error": "Terraform plan failed"
+}

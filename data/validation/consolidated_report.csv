@@ -1,0 +1,301 @@
+candidate_id,cosine_sim,functional_equivalence_rate,mean_confidence,label,primary_category,subcategory,severity,comments
+p001_c1,0.9938822984695435,1.0,0.9938822984695435,Trusted,,,,OK
+p001_c2,0.9892814755439758,1.0,0.9892814755439758,Trusted,Maintainability,Deprecated Attribute,Warning,Deprecated lifecycle_rule; use aws_s3_bucket_lifecycle_configuration
+p001_c3,0.9918354153633118,1.0,0.9918354153633118,Trusted,,,,OK
+p001_c4,0.9893367886543274,1.0,0.9893367886543274,Trusted,,,,OK
+p001_c5,0.9892814755439758,1.0,0.9892814755439758,Trusted,Maintainability,Deprecated Attribute,Warning,Deprecated lifecycle_rule; use aws_s3_bucket_lifecycle_configuration
+p002_c1,0.9941076040267944,1.0,0.9941076040267944,Trusted,,,,OK
+p002_c2,0.9803853034973145,1.0,0.9803853034973145,Trusted,External Dependencies,Dynamic Account ID Lookup,Warning,Uses data.aws_caller_identity.current for root principal; acceptable but adds external dependency
+p002_c3,0.9952834248542786,1.0,0.9952834248542786,Trusted,,,,OK
+p002_c4,0.9882165193557739,1.0,0.9882165193557739,Trusted,,,,OK
+p002_c5,0.9927634000778198,1.0,0.9927634000778198,Untrusted,Functional Defects,ODC-Interface,Error,Unsupported argument 'enabled'; should be 'is_enabled'
+p003_c1,1.0000001192092896,1.0,1.0000001192092896,Trusted,,,,OK
+p003_c2,1.0000001192092896,1.0,1.0000001192092896,Trusted,,,,OK
+p003_c3,1.0000001192092896,1.0,1.0000001192092896,Trusted,,,,OK
+p003_c4,1.0000001192092896,1.0,1.0000001192092896,Trusted,,,,OK
+p003_c5,1.0000001192092896,1.0,1.0000001192092896,Trusted,,,,OK
+p004_c1,0.9995057582855225,1.0,0.9995057582855225,Trusted,,,,OK
+p004_c2,0.9999691247940063,1.0,0.9999691247940063,Trusted,,,,OK
+p004_c3,0.9999691247940063,1.0,0.9999691247940063,Trusted,,,,OK
+p004_c4,0.9999691247940063,1.0,0.9999691247940063,Trusted,,,,OK
+p004_c5,0.9999691247940063,1.0,0.9999691247940063,Trusted,,,,OK
+p005_c1,0.984042227268219,1.0,0.984042227268219,Trusted,,,,OK
+p005_c2,0.9842971563339233,1.0,0.9842971563339233,Trusted,,,,OK
+p005_c3,0.980831503868103,1.0,0.980831503868103,Trusted,,,,OK
+p005_c4,0.97212815284729,1.0,0.97212815284729,Trusted,,,,OK
+p005_c5,0.9724189639091492,1.0,0.9724189639091492,Trusted,,,,OK
+p006_c1,0.9730160236358643,1.0,0.9730160236358643,Trusted,,,,OK
+p006_c2,0.9839385747909546,1.0,0.9839385747909546,Trusted,,,,OK
+p006_c3,0.9321114420890808,1.0,0.9321114420890808,Trusted,,,,OK
+p006_c4,0.9903319478034973,1.0,0.9903319478034973,Trusted,,,,OK
+p006_c5,0.9793509244918823,1.0,0.9793509244918823,Trusted,,,,OK
+p007_c1,0.9798218607902527,1.0,0.9798218607902527,Trusted,,,,OK
+p007_c2,0.9788140654563904,1.0,0.9788140654563904,Trusted,,,,OK
+p007_c3,0.7472279071807861,1.0,0.7472279071807861,Untrusted,Security Vulnerabilities,Improper Access Control,Critical,Open SSH (0.0.0.0/0) exposes instance publicly
+p007_c4,0.974136471748352,1.0,0.974136471748352,Trusted,,,,OK
+p007_c5,0.960838794708252,1.0,0.960838794708252,Trusted,,,,OK
+p008_c1,0.992567777633667,1.0,0.992567777633667,Trusted,,,,OK
+p008_c2,0.9756996035575867,1.0,0.9756996035575867,Trusted,,,,OK
+p008_c3,0.9874741435050964,1.0,0.9874741435050964,Trusted,,,,OK
+p008_c4,0.9927850365638733,1.0,0.9927850365638733,Trusted,,,,OK
+p008_c5,0.9874741435050964,1.0,0.9874741435050964,Trusted,,,,OK
+p009_c1,0.9936643242835999,1.0,0.9936643242835999,Trusted,,,,OK
+p009_c2,0.9917677044868469,1.0,0.9917677044868469,Trusted,,,,OK
+p009_c3,0.9914391040802002,1.0,0.9914391040802002,Trusted,,,,OK
+p009_c4,0.984775185585022,1.0,0.984775185585022,Trusted,,,,OK
+p009_c5,0.9400370121002197,1.0,0.9400370121002197,Trusted,Maintainability,Naming Convention,Warning,Generated resource names start with '-' due to replace(); could be suboptimal
+p010_c1,0.9905619621276855,1.0,0.9905619621276855,Untrusted,Functional Defects,ODC-Assignment,Error,Additional EBS volume created as separate aws_ebs_volume + aws_volume_attachment does not set delete_on_termination=true; only root_block_device has it. Also uses data.aws_availability_zones unnecessarily.
+p010_c2,0.9653315544128418,1.0,0.9653315544128418,Untrusted,Functional Defects,ODC-Assignment,Error,Missing delete_on_termination=true for additional EBS volume; root_block_device also lacks it. Uses data.aws_availability_zones unnecessarily.
+p010_c3,0.9747897982597351,1.0,0.9747897982597351,Untrusted,Functional Defects,ODC-Assignment,Error,No delete_on_termination=true anywhere; additional volume is separate aws_ebs_volume and cannot set the required flag.
+p010_c4,0.9821311235427856,1.0,0.9821311235427856,Untrusted,Functional Defects,ODC-Assignment,Error,Additional EBS volume does not set delete_on_termination=true; only root_block_device has it. Also uses data.aws_availability_zones unnecessarily.
+p010_c5,0.974076509475708,1.0,0.974076509475708,Untrusted,Functional Defects,ODC-Assignment,Error,Additional EBS volume does not set delete_on_termination=true; only root_block_device has it. The prompt requires the additional volume to have delete_on_termination=true.
+p011_c1,0.9935122728347778,1.0,0.9935122728347778,Trusted,,,,OK
+p011_c2,0.9981476664543152,1.0,0.9981476664543152,Trusted,,,,OK
+p011_c3,0.9979169368743896,1.0,0.9979169368743896,Trusted,,,,OK
+p011_c4,0.9972574710845947,1.0,0.9972574710845947,Trusted,,,,OK
+p011_c5,0.9980026483535767,1.0,0.9980026483535767,Trusted,,,,OK
+p012_c1,0.985091507434845,1.0,0.985091507434845,Trusted,,,,OK
+p012_c2,0.9845155477523804,1.0,0.9845155477523804,Trusted,,,,OK
+p012_c3,0.9718372821807861,1.0,0.9718372821807861,Untrusted,External Dependencies,Unused Construct,Warning,Unused external data sources (data.aws_caller_identity; data.aws_region)
+p012_c4,0.9715105295181274,1.0,0.9715105295181274,Trusted,,,,OK
+p012_c5,0.976944625377655,1.0,0.976944625377655,Untrusted,External Dependencies,Unused Construct,Warning,Unused external data source (data.aws_caller_identity)
+p013_c1,0.9822720289230347,1.0,0.9822720289230347,Untrusted,External Dependencies; Maintainability,Unnecessary Dependencies; Deprecated Attribute,Warning; Warning,Uncontrolled external data dependency; deprecated attribute
+p013_c2,0.9756072163581848,1.0,0.9756072163581848,Trusted,,,,OK
+p013_c3,0.9782532453536987,1.0,0.9782532453536987,Untrusted,External Dependencies,Unused Construct,Warning,Unused external data sources (data.aws_caller_identity; data.aws_region)
+p013_c4,0.9845531582832336,1.0,0.9845531582832336,Untrusted,External Dependencies; Maintainability,Unnecessary Dependencies; Deprecated Attribute,Warning; Warning,Uncontrolled external data dependency; deprecated attribute
+p013_c5,0.9783816933631897,1.0,0.9783816933631897,Trusted,,,,OK
+p014_c1,0.9730704426765442,1.0,0.9730704426765442,Trusted,,,,OK
+p014_c2,0.9250949025154114,1.0,0.9250949025154114,Untrusted,Functional Defects,ODC-Interface,Error,Unsupported argument 'endpoints' used as variable; should be a block
+p014_c3,0.9663094282150269,1.0,0.9663094282150269,Trusted,,,,OK
+p014_c4,0.9518864154815674,1.0,0.9518864154815674,Trusted,,,,OK
+p014_c5,0.8367374539375305,1.0,0.8367374539375305,Untrusted,Validation Inconsistency,Mismatched Validation Output,Critical,Validation output does not correspond to submitted code; possible pipeline error
+p015_c1,0.9934543967247009,1.0,0.9934543967247009,Trusted,,,,OK
+p015_c2,0.9562045335769653,1.0,0.9562045335769653,Trusted,,,,OK
+p015_c3,0.9934543967247009,1.0,0.9934543967247009,Trusted,,,,OK
+p015_c4,0.994577169418335,1.0,0.994577169418335,Trusted,,,,OK
+p015_c5,0.9815168976783752,1.0,0.9815168976783752,Trusted,,,,OK
+p016_c1,0.8965776562690735,1.0,0.8965776562690735,Trusted,External Dependencies,Dynamic Availability Zone Lookup,Warning,Uses data.aws_availability_zones; acceptable for AWS but adds external dependency in offline validation
+p016_c2,0.9614360332489014,1.0,0.9614360332489014,Untrusted,Security Vulnerabilities,Improper Access Control,Critical,Open SSH (0.0.0.0/0) exposes instance publicly
+p016_c3,0.9614360332489014,1.0,0.9614360332489014,Untrusted,Security Vulnerabilities,Improper Access Control,Critical,Open SSH (0.0.0.0/0) exposes instance publicly
+p016_c4,0.9332048296928406,1.0,0.9332048296928406,Trusted,External Dependencies,Dynamic Availability Zone Lookup,Warning,Uses data.aws_availability_zones; acceptable for AWS but adds external dependency in offline validation
+p016_c5,0.9638460874557495,1.0,0.9638460874557495,Trusted,,,,OK
+p017_c1,0.9807604551315308,1.0,0.9807604551315308,Trusted,External Dependencies,Dynamic Availability Zone Lookup,Warning,Uses data.aws_availability_zones; acceptable for AWS but adds external dependency in offline validation
+p017_c2,0.9669718742370605,1.0,0.9669718742370605,Trusted,External Dependencies,Dynamic Availability Zone Lookup,Warning,Uses data.aws_availability_zones; acceptable for AWS but adds external dependency in offline validation
+p017_c3,0.9863919019699097,1.0,0.9863919019699097,Untrusted,Maintainability,Unused Construct,Warning,Unused data.aws_region; dynamic AZ lookup acceptable but remove unused dependency
+p017_c4,0.897560715675354,1.0,0.897560715675354,Trusted,External Dependencies,Dynamic Availability Zone Lookup,Warning,Uses data.aws_availability_zones; acceptable for AWS but adds external dependency in offline validation
+p017_c5,0.9854588508605957,1.0,0.9854588508605957,Trusted,External Dependencies,Dynamic Availability Zone Lookup,Warning,Uses data.aws_availability_zones; acceptable for AWS but adds external dependency in offline validation
+p018_c1,0.9671542048454285,1.0,0.9671542048454285,Trusted,,,,OK
+p018_c2,0.9539384245872498,1.0,0.9539384245872498,Trusted,,,,OK
+p018_c3,0.9406566023826599,1.0,0.9406566023826599,Trusted,,,,OK
+p018_c4,0.9556593894958496,1.0,0.9556593894958496,Trusted,,,,OK
+p018_c5,0.935569703578949,1.0,0.935569703578949,Trusted,,,,OK
+p019_c1,0.9665343165397644,1.0,0.9665343165397644,Trusted,Maintainability,Deprecated Attribute,Warning,Uses deprecated data.aws_region.current.name attribute; dynamic AZ lookup is acceptable
+p019_c2,0.8920720815658569,1.0,0.8920720815658569,Trusted,,,,OK
+p019_c3,0.9739881753921509,1.0,0.9739881753921509,Trusted,Maintainability,Deprecated Attribute,Warning,Uses deprecated data.aws_region.current.name attribute; redundant Allow+Deny policy statements but functionally correct
+p019_c4,0.9872443079948425,1.0,0.9872443079948425,Trusted,Maintainability,Deprecated Attribute,Warning,Uses deprecated data.aws_region.current.name attribute; dynamic AZ lookup is acceptable
+p019_c5,0.9880586862564087,1.0,0.9880586862564087,Trusted,Maintainability,Deprecated Attribute,Warning,Uses deprecated data.aws_region.current.name attribute; dynamic AZ lookup is acceptable
+p020_c1,0.9750280380249023,1.0,0.9750280380249023,Trusted,,,,OK
+p020_c2,0.9733322858810425,1.0,0.9733322858810425,Trusted,,,,OK
+p020_c3,0.95168137550354,1.0,0.95168137550354,Trusted,External Dependencies,Dynamic Availability Zone Lookup,Warning,Uses data.aws_availability_zones for AZ validation/fallback; acceptable but adds external dependency
+p020_c4,0.9529318809509277,1.0,0.9529318809509277,Trusted,,,,OK
+p020_c5,0.9500006437301636,1.0,0.9500006437301636,Trusted,,,,OK
+p021_c1,0.9995139241218567,1.0,0.9995139241218567,Trusted,,,,OK
+p021_c2,0.9994566440582275,1.0,0.9994566440582275,Trusted,,,,OK
+p021_c3,0.9995139241218567,1.0,0.9995139241218567,Trusted,,,,OK
+p021_c4,0.9994566440582275,1.0,0.9994566440582275,Trusted,,,,OK
+p021_c5,0.9985870718955994,1.0,0.9985870718955994,Trusted,,,,OK
+p022_c1,0.9975759983062744,1.0,0.9975759983062744,Trusted,,,,OK
+p022_c2,0.9998486638069153,1.0,0.9998486638069153,Trusted,,,,OK
+p022_c3,0.9998486638069153,1.0,0.9998486638069153,Trusted,,,,OK
+p022_c4,0.9998486638069153,1.0,0.9998486638069153,Trusted,,,,OK
+p022_c5,0.9998486638069153,1.0,0.9998486638069153,Trusted,,,,OK
+p023_c1,0.9824439287185669,1.0,0.9824439287185669,Trusted,,,,OK
+p023_c2,0.9882964491844177,1.0,0.9882964491844177,Trusted,,,,OK
+p023_c3,0.8782987594604492,1.0,0.8782987594604492,Trusted,,,,OK
+p023_c4,0.9874110221862793,1.0,0.9874110221862793,Trusted,,,,OK
+p023_c5,0.9839175343513489,1.0,0.9839175343513489,Trusted,,,,OK
+p024_c1,0.9925820827484131,1.0,0.9925820827484131,Trusted,,,,OK
+p024_c2,0.9851263761520386,1.0,0.9851263761520386,Trusted,,,,OK
+p024_c3,0.9925820827484131,1.0,0.9925820827484131,Trusted,,,,OK
+p024_c4,0.988248884677887,1.0,0.988248884677887,Trusted,,,,OK
+p024_c5,0.9655991196632385,1.0,0.9655991196632385,Trusted,,,,OK
+p025_c1,0.9994628429412842,1.0,0.9994628429412842,Trusted,,,,OK
+p025_c2,0.9987909197807312,1.0,0.9987909197807312,Trusted,,,,OK
+p025_c3,0.9994628429412842,1.0,0.9994628429412842,Trusted,,,,OK
+p025_c4,0.9994628429412842,1.0,0.9994628429412842,Trusted,,,,OK
+p025_c5,0.9987909197807312,1.0,0.9987909197807312,Trusted,,,,OK
+p026_c1,0.9988736510276794,1.0,0.9988736510276794,Trusted,,,,OK
+p026_c2,0.9989220499992371,1.0,0.9989220499992371,Trusted,,,,OK
+p026_c3,0.9970811009407043,1.0,0.9970811009407043,Trusted,,,,OK
+p026_c4,0.9989220499992371,1.0,0.9989220499992371,Trusted,,,,OK
+p026_c5,0.9974796772003174,1.0,0.9974796772003174,Trusted,,,,OK
+p027_c1,0.9873896837234497,1.0,0.9873896837234497,Trusted,,,,OK
+p027_c2,0.9946402311325073,1.0,0.9946402311325073,Trusted,,,,OK
+p027_c3,0.9950536489486694,1.0,0.9950536489486694,Trusted,,,,OK
+p027_c4,0.9938475489616394,1.0,0.9938475489616394,Trusted,,,,OK
+p027_c5,0.9924459457397461,1.0,0.9924459457397461,Trusted,Maintainability,Unrequested Attribute,Warning,"Enables monitoring=true (detailed CloudWatch monitoring) on instance; not requested by prompt and may add cost, but does not break required alarm behavior"
+p028_c1,0.9921016693115234,1.0,0.9921016693115234,Untrusted,Functional Defects,ODC-Interface,Error,Plan failed: all indexes must match a defined attribute. Use key_schema instead of deprecated hash_key/range_key and ensure dynamic attributes are compatible with provider validation.
+p028_c2,0.998164713382721,1.0,0.998164713382721,Untrusted,Functional Defects,ODC-Interface,Error,Plan failed: all indexes must match a defined attribute. Use key_schema instead of deprecated hash_key/range_key and ensure dynamic attributes are compatible with provider validation.
+p028_c3,0.9863752722740173,1.0,0.9863752722740173,Untrusted,Functional Defects,ODC-Interface,Error,Plan failed: all indexes must match a defined attribute. Use key_schema instead of deprecated hash_key/range_key and ensure dynamic attributes are compatible with provider validation.
+p028_c4,0.998164713382721,1.0,0.998164713382721,Untrusted,Functional Defects,ODC-Interface,Error,Plan failed: all indexes must match a defined attribute. Use key_schema instead of deprecated hash_key/range_key and ensure dynamic attributes are compatible with provider validation.
+p028_c5,0.9971392750740051,1.0,0.9971392750740051,Untrusted,Functional Defects,ODC-Interface,Error,Plan failed: all indexes must match a defined attribute. Use key_schema instead of deprecated hash_key/range_key and ensure dynamic attributes are compatible with provider validation.
+p029_c1,0.990394651889801,1.0,0.990394651889801,Trusted,Maintainability,Uncommon Attribute Usage,Info,"assign_generated_ipv6_cidr_block=false used standalone on aws_vpc; accepted by provider in plan, not a standard/common pattern but not an error. CIDR math and AZ distribution verified correct against plan output."
+p029_c2,0.9907771944999695,1.0,0.9907771944999695,Trusted,,,,OK
+p029_c3,0.9907771944999695,1.0,0.9907771944999695,Trusted,,,,OK
+p029_c4,0.990394651889801,1.0,0.990394651889801,Trusted,,,,OK
+p029_c5,0.9754394292831421,1.0,0.9754394292831421,Trusted,Maintainability,Unused Construct,Warning,Unused local variable 'total_subnet_count'
+p030_c1,0.990356981754303,1.0,0.990356981754303,Untrusted,Functional Defects,ODC-Interface,Error,Confirmed genuine bug unrelated to tfvars hypothesis: count.index referenced in aws_s3_bucket_policy.this without that resource declaring its own count. Independent of principals variable content.
+p030_c2,0.9927023649215698,1.0,0.9927023649215698,Untrusted,Validation Inconsistency,Possible External tfvars Override,Warning,"Hypothesis (plausible, not yet confirmed): Statement=[] is consistent with principals being overridden to [] via terraform.tfvars (mirroring the confirmed pattern in p031 c1/c2), which would make count=0 and explain the empty result deterministically. No direct tfvars evidence in this output, unlike p031. Needs re-run with default principals confirmed before upgrading to Trusted."
+p030_c3,0.9953125715255737,1.0,0.9953125715255737,Trusted,,,,"Code correct; plan showed empty Statement because run_validation likely injected principals=[] via terraform.tfvars. With default principals, policy includes both statements."
+p030_c4,0.9943362474441528,1.0,0.9943362474441528,Untrusted,Validation Inconsistency,Possible External tfvars Override,Warning,"'empty tuple' error is consistent with principals=[] override (count=0 → 0 data source instances → any index invalid), same hypothesis as c2/c3. However, even if confirmed, this candidate has an independent design defect: hardcoded [0] index would only ever apply role1's permissions regardless of principals content, never role2's — violating the prompt's requirement to grant each principal its own statement. Needs re-run to isolate the two issues."
+p030_c5,0.9961234331130981,1.0,0.9961234331130981,Untrusted,Validation Inconsistency,Possible External tfvars Override,Warning,"Same as c4: 'empty tuple' is consistent with the tfvars-override hypothesis, but the hardcoded [0] index is an independent, confirmed design defect — role2 would never receive permissions even with a correctly-populated principals list. Needs re-run to separate the two causes."
+p031_c1,0.9800664186477661,1.0,0.9800664186477661,Trusted,External Dependencies,Uncontrolled External Data,Warning,Uses data.aws_availability_zones to select AZs; adds external AWS API dependency and can fail in constrained/offline environments. Code otherwise meets prompt.
+p031_c2,0.9452223777770996,1.0,0.9452223777770996,Trusted,External Dependencies,Uncontrolled External Data,Warning,Uses data.aws_availability_zones to select AZs; adds external AWS API dependency and can fail in constrained/offline environments. Code otherwise meets prompt.
+p031_c3,0.9046998023986816,1.0,0.9046998023986816,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: output block 'service_name' missing required argument 'value'; unterminated string literal. Candidate file is truncated/incomplete.
+p031_c4,0.9663823843002319,1.0,0.9663823843002319,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: unterminated object constructor in aws_ecs_task_definition; file truncated/incomplete.
+p031_c5,0.9220677614212036,1.0,0.9220677614212036,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: aws_ecs_service 'desired_count' missing value; file truncated/incomplete.
+p032_c1,0.9920201301574707,1.0,0.9920201301574707,Untrusted,Functional Defects,ODC-Interface,Error,"Unsupported block type 'provisioned_throughput' in aws_dynamodb_table; use read_capacity/write_capacity as direct arguments, not dynamic blocks."
+p032_c2,0.9920044541358948,1.0,0.9920044541358948,Trusted,,,,OK
+p032_c3,0.9785037636756897,1.0,0.9785037636756897,Trusted,,,,OK
+p032_c4,0.9801709055900574,1.0,0.9801709055900574,Trusted,,,,OK
+p032_c5,0.9609925746917725,1.0,0.9609925746917725,Trusted,,,,OK
+p033_c1,0.9650413990020752,1.0,0.9650413990020752,Trusted,,,,OK
+p033_c2,0.9574095606803894,1.0,0.9574095606803894,Trusted,,,,OK
+p033_c3,0.9686055183410645,1.0,0.9686055183410645,Untrusted,External Dependencies,Unused Construct,Warning,Unused external data sources (data.aws_caller_identity; data.aws_region)
+p033_c4,0.942125678062439,1.0,0.942125678062439,Trusted,,,,OK
+p033_c5,0.9388920068740845,1.0,0.9388920068740845,Trusted,,,,OK
+p034_c1,0.987715482711792,1.0,0.987715482711792,Trusted,,,,OK
+p034_c2,0.9845461845397949,1.0,0.9845461845397949,Trusted,,,,OK
+p034_c3,0.9967072010040283,1.0,0.9967072010040283,Trusted,,,,OK
+p034_c4,0.9957013726234436,1.0,0.9957013726234436,Untrusted,Functional Defects; External Dependencies,ODC-Interface; Dynamic Account ID Lookup,Error; Warning,Lambda execution role lacks SQS and S3 permissions; Lambda cannot poll SQS or read/write S3. Uses data.aws_caller_identity.current for SQS policy SourceAccount condition (acceptable but adds external dependency)
+p034_c5,0.9967072010040283,1.0,0.9967072010040283,Trusted,,,,OK
+p035_c1,0.9844109416007996,1.0,0.9844109416007996,Trusted,Maintainability,Overly Complex,Warning,"Uses min() for private subnet AZ mapping; if private_subnet_cidrs length exceeds azs, all extra private subnets collapse into last AZ. Prompt does not require private count == azs, so not a functional defect, but distribution could be suboptimal."
+p035_c2,0.9867678880691528,1.0,0.9867678880691528,Trusted,,,,OK
+p035_c3,0.9930367469787598,1.0,0.9930367469787598,Trusted,,,,OK
+p035_c4,0.9930367469787598,1.0,0.9930367469787598,Trusted,,,,OK
+p035_c5,0.8797763586044312,1.0,0.8797763586044312,Trusted,,,,OK
+p036_c1,0.9598970413208008,1.0,0.9598970413208008,Trusted,External Dependencies,Dynamic Availability Zone Lookup,Warning,Uses data.aws_availability_zones and data.aws_ami; acceptable for AWS but adds external dependency in offline validation
+p036_c2,0.9426274299621582,1.0,0.9426274299621582,Trusted,External Dependencies,Dynamic Availability Zone Lookup,Warning,Uses data.aws_availability_zones and data.aws_ami; acceptable for AWS but adds external dependency in offline validation
+p036_c3,0.9435205459594727,1.0,0.9435205459594727,Trusted,External Dependencies; Maintainability; Validation Inconsistency,Dynamic Availability Zone Lookup; Unused Construct; Missing Plan Output,Warning; Warning; Warning,Uses data.aws_availability_zones/data.aws_ami; ignores var.alb_config.vpc_id when provided; validation response only shows summary statuses without detailed Terraform plan
+p036_c4,0.9479680061340332,1.0,0.9479680061340332,Trusted,External Dependencies; Maintainability,Dynamic Availability Zone Lookup; Unused Construct,Warning; Warning,Uses data.aws_availability_zones/data.aws_ami; ignores var.alb_config.vpc_id when provided and ASG uses created subnets instead of var.alb_config.subnet_ids
+p036_c5,0.9102925658226013,1.0,0.9102925658226013,Trusted,External Dependencies,Dynamic Availability Zone Lookup,Warning,Uses data.aws_availability_zones and data.aws_ami; acceptable for AWS but adds external dependency in offline validation
+p037_c1,0.9738958477973938,1.0,0.9738958477973938,Untrusted,Functional Defects; External Dependencies,ODC-Resource/Structure; Unused Construct,Error; Warning,"Launch template uses generic Amazon Linux 2 AMI (amzn2-ami-hvm) instead of ECS-optimized AMI; ECS agent absent, instances cannot join ECS capacity provider. data.aws_availability_zones.available is declared but unused"
+p037_c2,0.9760439991950989,1.0,0.9760439991950989,Untrusted,Functional Defects,ODC-Resource/Structure,Error,Launch template does not attach aws_iam_instance_profile.ecs (ECS instance role); instances cannot register with ECS cluster. aws_security_group.ecs is also not attached to launch template
+p037_c3,0.971770167350769,1.0,0.971770167350769,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: output 'cluster_id' missing required argument 'value'; unclosed configuration block; file truncated/incomplete
+p037_c4,0.9221834540367126,1.0,0.9221834540367126,Untrusted,Functional Defects,ODC-Interface,Error,aws_ecs_service uses network_configuration with task_definition network_mode='bridge'; AWS ECS rejects network_configuration for bridge network mode. Use awsvpc or remove network_configuration
+p037_c5,0.9776706695556641,1.0,0.9776706695556641,Untrusted,Functional Defects; External Dependencies,ODC-Interface; Unused Construct,Error; Warning,aws_ecs_service uses network_configuration with network_mode='bridge'; AWS rejects it. data.aws_region and data.aws_caller_identity are declared but unused
+p038_c1,0.9877839684486389,1.0,0.9877839684486389,Trusted,Functional Defects,ODC-Checking,Warning,Missing aws_sns_topic_policy allowing cloudwatch.amazonaws.com to publish to SNS; alarm action may fail at runtime
+p038_c2,0.99078768491745,1.0,0.99078768491745,Trusted,Functional Defects,ODC-Checking,Warning,Missing aws_sns_topic_policy allowing cloudwatch.amazonaws.com to publish to SNS; alarm action may fail at runtime
+p038_c3,0.93080735206604,1.0,0.93080735206604,Trusted,Functional Defects,ODC-Checking,Warning,Missing aws_sns_topic_policy allowing cloudwatch.amazonaws.com to publish to SNS; alarm action may fail at runtime
+p038_c4,0.9749956130981445,1.0,0.9749956130981445,Trusted,Functional Defects,ODC-Checking,Warning,Missing aws_sns_topic_policy allowing cloudwatch.amazonaws.com to publish to SNS; alarm action may fail at runtime
+p038_c5,0.99078768491745,1.0,0.99078768491745,Trusted,Functional Defects,ODC-Checking,Warning,Missing aws_sns_topic_policy allowing cloudwatch.amazonaws.com to publish to SNS; alarm action may fail at runtime
+p039_c1,0.9337859749794006,1.0,0.9337859749794006,Trusted,Maintainability,Unused Construct,Warning,Variable bastion_config.subnet_id is declared but unused; instance always uses the created public subnet. Otherwise meets prompt
+p039_c2,0.9745267629623413,1.0,0.9745267629623413,Trusted,External Dependencies; Maintainability,Dynamic Availability Zone Lookup; Unused Construct,Warning; Warning,Uses data.aws_availability_zones for AZ lookup; adds external AWS API dependency. bastion_config.subnet_id is unused
+p039_c3,0.9748347997665405,1.0,0.9748347997665405,Untrusted,Functional Defects; External Dependencies,ODC-Assignment; Dynamic Availability Zone Lookup,Error; Warning,"coalesce(var.bastion_config.subnet_id, aws_subnet.public.id) returns empty string when default subnet_id='' because Terraform coalesce does not treat empty strings as null; will cause invalid subnet_id at apply. Use var.bastion_config.subnet_id != '' ? var.bastion_config.subnet_id : aws_subnet.public.id instead. Also uses data.aws_availability_zones"
+p039_c4,0.9678847789764404,1.0,0.9678847789764404,Trusted,External Dependencies; Maintainability,Dynamic Availability Zone Lookup; Unused Construct,Warning; Warning,Uses data.aws_availability_zones for AZ lookup; adds external AWS API dependency. bastion_config.subnet_id is unused
+p039_c5,0.9427869915962219,1.0,0.9427869915962219,Trusted,External Dependencies,Dynamic Availability Zone Lookup,Warning,Uses data.aws_availability_zones for AZ lookup; adds external AWS API dependency. Otherwise meets prompt
+p040_c1,0.9066956639289856,1.0,0.9066956639289856,Trusted,,,,OK
+p040_c2,0.9911870956420898,1.0,0.9911870956420898,Trusted,,,,OK
+p040_c3,0.9915969967842102,1.0,0.9915969967842102,Trusted,Maintainability,Uncommon Attribute Usage,Info,"Lifecycle rule omits filter block; applies to all objects by default, acceptable per prompt"
+p040_c4,0.9923757314682007,1.0,0.9923757314682007,Trusted,Maintainability,Uncommon Attribute Usage,Info,"Lifecycle rule omits filter block; applies to all objects by default, acceptable per prompt"
+p040_c5,0.9911870956420898,1.0,0.9911870956420898,Trusted,,,,OK
+p041_c1,0.9738143086433411,1.0,0.9738143086433411,Trusted,Maintainability,Unrequested Attribute,Info,"Adds tag backup_retention_days with tostring(var.backup_config.backup_retention_days); not requested by prompt and not a native DynamoDB PITR retention field, but harmless"
+p041_c2,0.9758931398391724,1.0,0.9758931398391724,Trusted,,,,OK
+p041_c3,0.9518730044364929,1.0,0.9518730044364929,Trusted,,,,OK
+p041_c4,0.97850102186203,1.0,0.97850102186203,Trusted,,,,OK
+p041_c5,0.9518730044364929,1.0,0.9518730044364929,Trusted,,,,OK
+p042_c1,0.9631561040878296,1.0,0.9631561040878296,Trusted,,,,OK
+p042_c2,0.9859278798103333,1.0,0.9859278798103333,Trusted,,,,OK
+p042_c3,0.9842075109481812,1.0,0.9842075109481812,Untrusted,Functional Defects,ODC-Assignment,Error,"coalesce('', aws_lb_target_group.this.arn) returns empty string when target_group_arn is empty, not the created target group ARN; should use condition var.asg_config.target_group_arn != '' ? var.asg_config.target_group_arn : aws_lb_target_group.this.arn"
+p042_c4,0.8793691992759705,1.0,0.8793691992759705,Trusted,,,,OK
+p042_c5,0.9817384481430054,1.0,0.9817384481430054,Untrusted,Functional Defects,ODC-Interface,Error,Ignores var.asg_config.target_group_arn; always uses created target group ARN. Prompt requires using provided target_group_arn when non-empty
+p043_c1,0.9629539847373962,1.0,0.9629539847373962,Trusted,External Dependencies,Dynamic Availability Zone Lookup,Warning,Uses data.aws_availability_zones and data.aws_ami; adds external AWS API dependency in offline validation. Otherwise meets prompt
+p043_c2,0.9729626178741455,1.0,0.9729626178741455,Untrusted,Security Vulnerabilities; Maintainability,Improper Access Control; Hardcoded Debugging,Critical; Warning,Open SSH (0.0.0.0/0) exposes bastion publicly; uses hardcoded placeholder public key in aws_key_pair
+p043_c3,0.9699907302856445,1.0,0.9699907302856445,Trusted,External Dependencies,Dynamic Availability Zone Lookup,Warning,"Uses data.aws_availability_zones and data.aws_ami; adds external AWS API dependency. Only public subnets created, but prompt does not require private subnets"
+p043_c4,0.9842623472213745,1.0,0.9842623472213745,Untrusted,Security Vulnerabilities,Improper Access Control,Critical,Open SSH (0.0.0.0/0) exposes bastion publicly; otherwise meets prompt
+p043_c5,0.9889876246452332,1.0,0.9889876246452332,Untrusted,Security Vulnerabilities; Maintainability; External Dependencies,Improper Access Control; Unused Construct; Dynamic Availability Zone Lookup,Critical; Warning; Warning,Open SSH (0.0.0.0/0) exposes bastion publicly. aws_security_group.dynamodb_endpoint is unused; gateway VPC endpoint does not support security_groups. Uses data.aws_availability_zones and data.aws_ami
+p044_c1,0.9899606704711914,1.0,0.9899606704711914,Untrusted,Functional Defects,ODC-Resource/Structure,Error,Missing aws_lambda_event_source_mapping to connect SQS queue to Lambda consumer; stream processing system is incomplete. Lambda role also lacks SQS permissions
+p044_c2,0.9828395843505859,1.0,0.9828395843505859,Untrusted,Functional Defects; Maintainability,ODC-Checking; Unused Construct,Error; Warning,"Lambda role lacks SQS permissions (ReceiveMessage/DeleteMessage/GetQueueAttributes), so SQS event source mapping will fail at runtime. Also has unused data.archive_file.dummy_lambda_zip with source_file=output_path=lambda_function_payload.zip"
+p044_c3,0.9899898767471313,1.0,0.9899898767471313,Untrusted,Functional Defects,ODC-Checking,Error,Lambda role lacks SQS permissions; SQS event source mapping cannot process messages. Otherwise valid
+p044_c4,0.9509775042533875,1.0,0.9509775042533875,Untrusted,Functional Defects,ODC-Checking,Error,Plan failed: retention_hours validation (1-14) conflicts with default value 24. Also missing SQS event source mapping and Lambda SQS permissions
+p044_c5,0.9760118722915649,1.0,0.9760118722915649,Untrusted,Functional Defects; Maintainability,ODC-Checking; Uncommon Attribute Usage,Error; Info,"Lambda role lacks SQS permissions; SQS event source mapping cannot process messages. Uses min/max clamp for message_retention_seconds instead of validation block, but clamp ensures valid range"
+p045_c1,0.9998453259468079,1.0,0.9998453259468079,Trusted,,,,OK
+p045_c2,0.9998453259468079,1.0,0.9998453259468079,Trusted,Security Vulnerabilities,Security-General,Warning,SQS queue policy uses Principal '*' with SourceArn condition; functionally acceptable but prefer Principal sns.amazonaws.com
+p045_c3,0.9998453259468079,1.0,0.9998453259468079,Untrusted,Functional Defects,ODC-Resource/Structure,Error,Missing aws_sqs_queue_policy allowing SNS to send messages to SQS; SNS messages will not be delivered to queues
+p045_c4,0.9975212216377258,1.0,0.9975212216377258,Untrusted,Functional Defects,ODC-Resource/Structure,Error,Missing aws_sqs_queue_policy allowing SNS to send messages to SQS; SNS messages will not be delivered to queues
+p045_c5,0.9998453259468079,1.0,0.9998453259468079,Trusted,,,,OK
+p046_c1,0.9866560697555542,1.0,0.9866560697555542,Untrusted,Functional Defects; Maintainability,ODC-Resource/Structure; Unused Construct,Error; Warning,Missing aws_s3_bucket_notification and aws_sqs_queue_policy to connect S3 input to SQS; pipeline incomplete. alert_email variable required but not part of prompt; validation injected placeholder
+p046_c2,0.9784349203109741,1.0,0.9784349203109741,Untrusted,Functional Defects,ODC-Resource/Structure,Error,Missing aws_s3_bucket_notification and aws_sqs_queue_policy to connect S3 input to SQS; pipeline incomplete
+p046_c3,0.9877333641052246,1.0,0.9877333641052246,Untrusted,Functional Defects,ODC-Resource/Structure,Error,Missing aws_s3_bucket_notification and aws_sqs_queue_policy to connect S3 input to SQS; pipeline incomplete
+p046_c4,0.988737940788269,1.0,0.988737940788269,Untrusted,Functional Defects,ODC-Resource/Structure,Error,Missing aws_s3_bucket_notification and aws_sqs_queue_policy to connect S3 input to SQS; pipeline incomplete
+p046_c5,0.9711672067642212,1.0,0.9711672067642212,Untrusted,Functional Defects; Maintainability,ODC-Resource/Structure; Deprecated Attribute,Error; Warning,Missing aws_s3_bucket_notification and aws_sqs_queue_policy to connect S3 input to SQS; pipeline incomplete. Uses deprecated data.aws_region.current.name attribute
+p047_c1,0.8067766427993774,1.0,0.8067766427993774,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: unclosed configuration block in aws_lb; file truncated/incomplete
+p047_c2,0.9662666916847229,1.0,0.9662666916847229,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: missing expression for timeout in aws_lb_target_group; file truncated/incomplete
+p047_c3,0.9173663258552551,1.0,0.9173663258552551,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: unterminated function call in aws_dynamodb_table tags; file truncated/incomplete
+p047_c4,0.9390634894371033,1.0,0.9390634894371033,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: missing expression for policy in aws_iam_role_policy; file truncated/incomplete
+p047_c5,0.9686925411224365,1.0,0.9686925411224365,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: unclosed configuration block in aws_lb; file truncated/incomplete
+p048_c1,0.9773937463760376,1.0,0.9773937463760376,Trusted,,,,OK
+p048_c2,0.9700825810432434,1.0,0.9700825810432434,Trusted,,,,OK
+p048_c3,0.9875808358192444,1.0,0.9875808358192444,Trusted,,,,OK
+p048_c4,0.9922735691070557,1.0,0.9922735691070557,Trusted,,,,OK
+p048_c5,0.9746654629707336,1.0,0.9746654629707336,Trusted,,,,OK
+p049_c1,0.979346752166748,1.0,0.979346752166748,Trusted,,,,OK
+p049_c2,0.9840331673622131,1.0,0.9840331673622131,Untrusted,Functional Defects,ODC-Resource/Structure,Error,Creates a single lifecycle rule with dynamic transition blocks instead of multiple lifecycle rules using for_each as requested by prompt
+p049_c3,0.9706051349639893,1.0,0.9706051349639893,Trusted,Maintainability,Deprecated Attribute,Warning,Uses deprecated aws_s3_bucket lifecycle_rule and versioning blocks; use dedicated aws_s3_bucket_lifecycle_configuration and aws_s3_bucket_versioning resources
+p049_c4,0.9699956178665161,1.0,0.9699956178665161,Untrusted,Functional Defects,ODC-Assignment,Error,"bucket_name default is null; no random suffix generated, so bucket name will be invalid. Intelligent tiering configuration also creates zero instances because no default rule matches INTELLIGENT_TIERING"
+p049_c5,0.9159409403800964,1.0,0.9159409403800964,Trusted,,,,OK
+p050_c1,0.9821223616600037,1.0,0.9821223616600037,Trusted,,,,OK
+p050_c2,0.985979437828064,1.0,0.985979437828064,Trusted,,,,OK
+p050_c3,0.9906042814254761,1.0,0.9906042814254761,Trusted,,,,OK
+p050_c4,0.9653792381286621,1.0,0.9653792381286621,Trusted,Maintainability,Unused Construct,Warning,Declares required_providers archive but does not use archive provider
+p050_c5,0.9736080169677734,1.0,0.9736080169677734,Trusted,External Dependencies,Dynamic Account ID Lookup,Warning,Uses data.aws_caller_identity.current for CloudWatch Logs ARN; acceptable but adds external dependency
+p051_c1,0.977310299873352,1.0,0.977310299873352,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: invalid interpolation '${aws:InstanceId}' inside user_data; escape literal CloudWatch agent placeholder as '$${aws:InstanceId}'
+p051_c2,0.9835642576217651,1.0,0.9835642576217651,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: invalid interpolation '${aws:InstanceId}' inside user_data; escape literal CloudWatch agent placeholder as '$${aws:InstanceId}'
+p051_c3,0.9619610905647278,1.0,0.9619610905647278,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: invalid interpolation '${aws:InstanceId}' inside user_data; escape as '$${aws:InstanceId}'. bucket_name variable lacks default
+p051_c4,0.9316262602806091,1.0,0.9316262602806091,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: invalid interpolation '${aws:InstanceId}' inside user_data; escape as '$${aws:InstanceId}'
+p051_c5,0.9690629243850708,1.0,0.9690629243850708,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: invalid interpolation '${aws:InstanceId}' inside user_data; escape as '$${aws:InstanceId}'. bucket_name variable lacks default
+p052_c1,0.9689658880233765,1.0,0.9689658880233765,Trusted,,,,OK
+p052_c2,0.9487205147743225,1.0,0.9487205147743225,Trusted,,,,OK
+p052_c3,0.9311612248420715,1.0,0.9311612248420715,Trusted,,,,OK
+p052_c4,0.8692870140075684,1.0,0.8692870140075684,Trusted,Maintainability,Unused Construct,Warning,Unused data.aws_caller_identity.current and data.aws_iam_policy_document.bucket_notifications
+p052_c5,0.9412274360656738,1.0,0.9412274360656738,Trusted,,,,OK
+p053_c1,0.972369909286499,1.0,0.972369909286499,Untrusted,Security Vulnerabilities,Improper Privilege Management,Critical,Attaches AdministratorAccess to alice and PowerUserAccess to bob; violates least privilege; prompt only asked to attach policies
+p053_c2,0.9520724415779114,1.0,0.9520724415779114,Trusted,,,,OK
+p053_c3,0.9777256846427917,1.0,0.9777256846427917,Untrusted,Security Vulnerabilities,Overly Permissive Policy,Critical,alice grants s3:* and iam:ListUsers on Resource '*'; bob/carol grant broad S3 actions on '*'; use bucket-scoped resources
+p053_c4,0.9675737619400024,1.0,0.9675737619400024,Untrusted,Security Vulnerabilities,Improper Privilege Management,Critical,Attaches AdministratorAccess to alice; violates least privilege
+p053_c5,0.9055476188659668,1.0,0.9055476188659668,Untrusted,Security Vulnerabilities,Overly Permissive Policy,Critical,Attaches AmazonS3FullAccess to alice; broad S3 permissions across all buckets; prefer bucket-scoped policy
+p054_c1,0.9871376752853394,1.0,0.9871376752853394,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: variable default cannot use path.module; Variables not allowed
+p054_c2,0.9892285466194153,1.0,0.9892285466194153,Trusted,,,,OK
+p054_c3,0.9836470484733582,1.0,0.9836470484733582,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: variable default cannot use path.module; Variables not allowed
+p054_c4,0.9861449599266052,1.0,0.9861449599266052,Trusted,,,,OK
+p054_c5,0.9893197417259216,1.0,0.9893197417259216,Trusted,,,,OK
+p055_c1,0.9560916423797607,1.0,0.9560916423797607,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: unterminated object constructor in aws_ecs_task_definition; file truncated/incomplete
+p055_c2,0.8959525227546692,1.0,0.8959525227546692,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: missing expression for hostPort in aws_ecs_task_definition; file truncated/incomplete
+p055_c3,0.9481386542320251,1.0,0.9481386542320251,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: missing expression for memory in aws_ecs_task_definition; file truncated/incomplete
+p055_c4,0.8955923318862915,1.0,0.8955923318862915,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: missing expression for Action in aws_iam_role ecs_task_execution; file truncated/incomplete
+p055_c5,0.9510173797607422,1.0,0.9510173797607422,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: unterminated object constructor in aws_ecs_task_definition; file truncated/incomplete
+p056_c1,0.901549756526947,1.0,0.901549756526947,Untrusted,Functional Defects,ODC-Interface,Error,Terraform plan failed: Cycle between provider region and data.aws_region.current. Use a static region or variable to configure provider region
+p056_c2,0.9860031604766846,1.0,0.9860031604766846,Untrusted,Security Vulnerabilities,Improper Access Control,Critical,SSH ingress from 0.0.0.0/0 exposes instance publicly; bucket policy uses s3:* but restricted to VPC endpoint. Also uses deprecated data.aws_region.current.name
+p056_c3,0.9821389317512512,1.0,0.9821389317512512,Untrusted,Functional Defects,ODC-Interface,Error,Terraform plan failed: reference to undeclared data.aws_iam_policy_document.s3_endpoint_policy
+p056_c4,0.9207610487937927,1.0,0.9207610487937927,Untrusted,Security Vulnerabilities,Improper Access Control,Critical,SSH ingress from 0.0.0.0/0 exposes instance publicly; also uses deprecated data.aws_region.current.name
+p056_c5,0.9861444234848022,1.0,0.9861444234848022,Untrusted,Security Vulnerabilities,Improper Access Control,Critical,SSH ingress from 0.0.0.0/0 exposes instance publicly; also uses deprecated data.aws_region.current.name
+p057_c1,0.9475537538528442,1.0,0.9475537538528442,Trusted,Maintainability,Deprecated Attribute,Warning,Uses deprecated aws_s3_bucket_lifecycle_configuration.id in output lifecycle_configuration_id
+p057_c2,0.9706946611404419,1.0,0.9706946611404419,Trusted,Maintainability,Deprecated Attribute,Warning,Uses deprecated aws_s3_bucket_lifecycle_configuration.id in output lifecycle_configuration_id
+p057_c3,0.9791337251663208,1.0,0.9791337251663208,Trusted,,,,OK
+p057_c4,0.9522410035133362,1.0,0.9522410035133362,Trusted,,,,OK
+p057_c5,0.9607299566268921,1.0,0.9607299566268921,Trusted,,,,OK
+p058_c1,0.801659882068634,1.0,0.801659882068634,Trusted,Maintainability,Unused Construct,Warning,Unused data sources
+p058_c2,0.9499208331108093,1.0,0.9499208331108093,Trusted,,,,OK
+p058_c3,0.9667216539382935,1.0,0.9667216539382935,Untrusted,Security Vulnerabilities,Overly Permissive Policy,High,Resource '*' for S3 and DynamoDB violates least privilege
+p058_c4,0.9549918174743652,1.0,0.9549918174743652,Untrusted,Security Vulnerabilities,Overly Permissive Policy,High,Resource '*' for S3 permissions violates least privilege
+p058_c5,0.9713430404663086,1.0,0.9713430404663086,Untrusted,Security Vulnerabilities,Overly Permissive Policy,High,Resource '*' for S3 ListBucket violates least privilege
+p059_c1,0.9777123332023621,1.0,0.9777123332023621,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: missing expression for health_check_type in aws_autoscaling_group; file truncated/incomplete
+p059_c2,0.988895058631897,1.0,0.988895058631897,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: unclosed configuration block in aws_autoscaling_group; file truncated/incomplete
+p059_c3,0.9936392307281494,1.0,0.9936392307281494,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: unterminated string in aws_cloudwatch_metric_alarm comparison_operator; file truncated/incomplete
+p059_c4,0.9885116815567017,1.0,0.9885116815567017,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: missing expression for adjustment_type in aws_autoscaling_policy; file truncated/incomplete
+p059_c5,0.9761302471160889,1.0,0.9761302471160889,Untrusted,Functional Defects,ODC-Interface,Error,Terraform init failed: unterminated string in aws_cloudwatch_metric_alarm alarm_name; file truncated/incomplete
+p060_c1,0.9793927669525146,1.0,0.9793927669525146,Trusted,,,,OK
+p060_c2,0.9817917943000793,1.0,0.9817917943000793,Trusted,,,,OK
+p060_c3,0.9787819385528564,1.0,0.9787819385528564,Trusted,,,,OK
+p060_c4,0.9566873908042908,1.0,0.9566873908042908,Trusted,,,,OK
+p060_c5,0.9619539976119995,1.0,0.9619539976119995,Trusted,,,,OK

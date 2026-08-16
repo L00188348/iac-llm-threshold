@@ -35,8 +35,8 @@ def main():
     rows = []
 
     for summary_file in summary_files:
-        # Extrair o ID do candidato do caminho
-        # Exemplo: level_1/p001/p001_c1 -> p001_c1
+        # Extract candidate ID from the path
+        # Example: level_1/p001/p001_c1 -> p001_c1
         candidate_id = summary_file.parent.name
 
         with open(summary_file, "r") as f:
@@ -50,7 +50,7 @@ def main():
             "checkov_findings": data.get("checkov", {}).get("findings_count", 0),
             "trivy_status": data.get("trivy", {}).get("status", "unknown"),
             "trivy_findings": data.get("trivy", {}).get("findings_count", 0),
-            "localstack_status": data.get("localstack", {}).get("status", "unknown"),
+            "terraform_status": data.get("terraform", {}).get("status", "unknown"),
         }
 
         rows.append(row)
@@ -69,10 +69,22 @@ def main():
 
     # Statistics
     print("\nStatistics:")
-    print(f"  Checkov - issues found: {len(df[df['checkov_status'] == 'issues_found'])} candidates")
+    print(f"  Checkov - issues found: {len(df[df['checkov_findings'] > 0])} candidates")
     print(f"  Trivy - issues found: {len(df[df['trivy_status'] == 'issues_found'])} candidates")
-    print(f"  LocalStack - success: {len(df[df['localstack_status'] == 'success'])} candidates")
-    print(f"  LocalStack - failed: {len(df[df['localstack_status'].str.startswith('failed')])} candidates")
+
+    # Safely count Terraform statuses (handle potential missing column)
+    if "terraform_status" in df.columns:
+        terraform_success = len(df[df['terraform_status'] == 'success'])
+        terraform_failed = len(df[df['terraform_status'].str.startswith('failed_')])
+        terraform_timeout = len(df[df['terraform_status'].str.startswith('timeout_')])
+        terraform_error = len(df[df['terraform_status'] == 'error'])
+
+        print(f"  Terraform - success: {terraform_success} candidates")
+        print(f"  Terraform - failed: {terraform_failed} candidates")
+        print(f"  Terraform - timeout: {terraform_timeout} candidates")
+        print(f"  Terraform - error: {terraform_error} candidates")
+    else:
+        print("  Terraform: no status data found")
 
 
 if __name__ == "__main__":
